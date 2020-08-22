@@ -19,6 +19,7 @@ Courses\
 
 
 Courses\
+	Optimisation.tex
 	Optimisation\
 		preamble.tex
 		lec1.tex
