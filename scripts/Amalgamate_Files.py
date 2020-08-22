@@ -1,20 +1,20 @@
-def get_header_footer(filepath):
+def get_header_footer(filepath, , start_of_insertable_content_marker = "%start", end_of_insertable_content_marker = "%end"):
     part = 0
     header = ""
     footer = ""
     with filepath.open() as f:
         for line in f:
-            if "end lectures" in line:
+            if end_of_insertable_content_marker in line:
                 part = 2
-
             if part == 0:
                 header +=line
             if part == 2:
                 footer +=line
-
-            if "start lectures" in line:
+            if start_of_insertable_content_marker in line:
                 part = 1
-    return(header,footer)
+
+    return header, footer
+
 
 def Amalgamate_Files(path_to_output_file, sorted_list_of_filenames, template = None): # writes the combined file to the output path
     if template == None:
