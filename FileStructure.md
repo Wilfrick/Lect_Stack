@@ -1,5 +1,6 @@
 An example file structure
 
+```text
 Courses\
 	Optimisation\
 		Lec1.tex
@@ -28,5 +29,5 @@ Courses\
 		...
 		Lec12.tex
 		
-		
+```
 Each LecX.tex should compile on it's own, and Optimisation should compile on it's own
