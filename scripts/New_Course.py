@@ -20,6 +20,7 @@ def new_course(name):
     figures.mkdir()
     preamble = course_directory / "preamble.tex"
     preamble.touch()
+    # preamble should have a single line  \include{../default_preamble.tex} at the top.
     example_sheets = course_directory / "example_sheets"
     example_sheets.mkdir()
 
