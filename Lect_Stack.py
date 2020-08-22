@@ -2,6 +2,8 @@
 
 def main():
     from sys import argv, exit
+
+
     number_of_arguments = len(argv)
     def show_help():
         print(
@@ -21,7 +23,18 @@ Options:
         if len(options) >= 0:
             pass # add more logic here to deal with other options
         else: # default behaviour
-            from scripts.
+            from os import getcwd, path
+            path_to_directory = path.join(argv[-1], getcwd)
+            if not os.path.isdir(path_to_directory):
+                show_help()
+                print("This failed because the path provided was not a directory") # this might still fail for special links, needs testing
+            from scripts.Enumerate_Files import Enumerate_Files
+            from scripts.Amalgamate_Files import Amalgamate_Files
+            from scripts.Sort_Files import Sort_Files
+            list_of_files = Enumerate_Files(path_to_directory)
+            sorted_list_of_files = Sort_Files(list_of_files)
+            Amalgamate_Files() # fill in these arguments
+
 
 
 
