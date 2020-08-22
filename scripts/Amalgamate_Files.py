@@ -2,7 +2,7 @@ def get_header_footer(filepath):
     part = 0
     header = ""
     footer = ""
-    with filepath open as f:
+    with filepath.open() as f:
         for line in f:
             if "end lectures" in line:
                 part = 2
