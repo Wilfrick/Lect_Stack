@@ -24,14 +24,13 @@ def new_course(name):
     example_sheets.mkdir()
 
     # The body template assumes that the documentclass statement is in the default preamble.
-    body = """\\input{{default-preamble.tex}} \n
-           \\input{{{0}/preamble.tex}} \n
-           \\title{{{1}.tex}} \n
-           \\begin{{document}} \n
-               \\maketitle \n
-               \\tableofcontents \n
-               % start lectures \n
-               % end lectures \n
-            \end{{document}}
-           """.format(name,name.Title)
+    body = """\\input{{{0}/preamble.tex}}
+\\title{{{1}.tex}}
+\\begin{{document}}
+\\maketitle
+\\tableofcontents
+% start lectures
+% end lectures
+\\end{{document}}
+""".format(name, name.Title)
     master_file.write_text(body)
