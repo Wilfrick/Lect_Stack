@@ -1,3 +1,3 @@
 # ToDo
 
-- [] 
+- [ ] A checklist?
