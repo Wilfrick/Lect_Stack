@@ -1,15 +1,16 @@
 from pathlib import Path
 
+
 def newCourse(name):
-    currentDirectory = Path('.')
-    courseDirectory = currentDirectory / name
+    current_directory = Path('.')
+    course_directory = current_directory / name
     try:
-        courseDirectory.mkdir()
+        course_directory.mkdir()
     except FileExistsError:
         print("The directory already exists!")
 
-    masterFile = currentDirectory / name + ".tex"
+    master_file = current_directory / name + ".tex"
     try:
-        masterFile.mkdir()
+        master_file.touch()
     except FileExistsError:
         print("The master file already exists!")
