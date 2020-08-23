@@ -1,0 +1,17 @@
+\input{global_preamble.tex}
+\renewcommand{\startEntry}[1][]{} % this line must stay here to ensure the program works
+\renewcommand{\finishEntry}[1][]{} % this line must stay here to ensure the program works
+
+% Lect_Stack will replace all of the ##<identifier>## strings with the text that they represent
+% If there are and ##<identifier>## strings left when you try to latexmk this file we make no guarantees that this will compile correctly. (Although it probably will still do something sensible)
+
+\begin{document}
+\author{##AUTHOR##}
+\title{##TITLE##}
+\maketitle
+\tableofcontents
+
+##ENTRIES##
+
+
+\end{document}
