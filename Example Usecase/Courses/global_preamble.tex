@@ -1,0 +1,50 @@
+\documentclass{article}
+
+\newcommand{\startEntry}[1][]{\begin{document}} % please don't change this line
+\newcommand{\finishEntry}[1][]{\end{document}} % please don't change this line
+
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{physics} % for \abs{}
+\usepackage{bm} % for \bm bold text
+
+\usepackage{graphicx}
+
+\graphicspath{ {./figures/} }
+
+\DeclareMathOperator{\im}{Im} %Image
+
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\re}{\mathbb{R}}
+\newcommand{\rat}{\mathbb{Q}} %rationals
+
+\newcommand{\transpose}{\intercal}  %why on earth is this thing called an `intercal'?
+\newcommand{\del}{\partial}
+
+\newcommand{\dx}[1][x]{\text{d} #1 }  %usage $\dx$ -> dx, or $\dx[V]$ -> dV
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{thmno}{Theorem}
+\newtheorem*{lemno}{Lemma}
+\newtheorem*{propno}{Proposition}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem*{defno}{Definition}
+
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newtheorem*{remno}{Remark}
+
+% Please edit this file as you please so that it does what you want it to. ()
+% This file is intended to contain all of the course independent macros and packages.
+% If you need a specific package or command for just one course, that should be defined in that course's "preamble.tex"
