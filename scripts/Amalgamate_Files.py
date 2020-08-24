@@ -32,10 +32,22 @@ def get_header_footer(filepath, start_of_insertable_content_marker = "%start", e
 
     return header, footer
 
-def replace_identifier_in_file_with_given_string(file_path, identifier, content_string, file_contents_as_a_string = None):
-    identifier = "%succ"
-    file_contents_as_a_string = "hi there\nHow are you\n%succ\nLol succ"
-    print(get_header_footer(file_path, identifier, identifier, file_contents_as_a_string)) # needs doing
+
+def define_custom_template_class(new_id_pattern = r"\#\#[_a-z][_a-z0-9]{1,}?\#\#", new_brace_id_pattern = None, new_delimiter = r""):
+    from string import Template
+    class Custom_Template(Template):
+        delimiter = new_delimiter
+        idpattern = new_id_pattern
+        braceidpattern = new_brace_id_pattern
+        pass
+    return Custom_Template
+
+
+def replace_identifiers_with_lookup_dictionary_in_string(template_string, lookup_dictionary, template_class = define_custom_template_class()):
+    replacement_codepoints = {"{": chr(0xF007B), "}": chr(0xF007D)}
+    custom_template_object = template_class(template_string.replace("{", replacement_codepoints["{"]).replace("}", replacement_codepoints["}"])) # transpose "{" and "}" so they won't affect the template code
+    template_string_with_new_insertions = custom_template_object.safe_substitute(lookup_dictionary).replace(replacement_codepoints["{"], "{").replace(replacement_codepoints["}"], "}")
+    return template_string_with_new_insertions
 
 
 def Amalgamate_Files(path_to_output_file, sorted_list_of_filenames, template_path = None): # writes the combined file to the output path
@@ -46,5 +58,7 @@ def Amalgamate_Files(path_to_output_file, sorted_list_of_filenames, template_pat
                     file_Contents = f_in.read()
                     f_out.write(file_Contents)
     else: # use the template
-        template_header, template_footer = get_header_footer(template_path)
+        template_file_contents_as_a_string = get_file_contents_from_filepath_or_file_contents(template_path)
+        from string import Template
+
 
