@@ -51,7 +51,7 @@ def replace_identifiers_with_lookup_dictionary_in_string(template_string, lookup
 
 
 def Amalgamate_Files(path_to_output_file, sorted_list_of_filenames, template_path = None): # writes the combined file to the output path
-    if template == None:
+    if template_path == None:
         with open(path_to_output_file, "wt") as f_out:
             for path in sorted_list_of_filenames:
                 with open(path, "rt") as f_in:
@@ -59,6 +59,8 @@ def Amalgamate_Files(path_to_output_file, sorted_list_of_filenames, template_pat
                     f_out.write(file_Contents)
     else: # use the template
         template_file_contents_as_a_string = get_file_contents_from_filepath_or_file_contents(template_path)
-        from string import Template
+        lookup_dictionary = {r"##ENTRIES##": "\n".join(r"\input{{{}}}".format(filename) for filename in sorted_list_of_filenames)}
+        output_file_contents = replace_identifiers_with_lookup_dictionary_in_string(template_file_contents_as_a_string, lookup_dictionary)
+        write_file_contents_to_file(path_to_output_file, output_file_contents)
 
 

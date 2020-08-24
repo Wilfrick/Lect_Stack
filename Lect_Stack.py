@@ -30,9 +30,9 @@ Options:
                 print("This failed because the path provided was not a directory") # this might still fail for special links, needs testing
             from scripts.Enumerate_Files import Enumerate_Filenames
             from scripts.Amalgamate_Files import Amalgamate_Files
-            from scripts.Sort_Files import Sort_Files
-            list_of_files = Enumerate_Filenames(path_to_directory)
-            sorted_list_of_files = Sort_Files(list_of_files)
+            from scripts.Sort_Files import Sort_Filenames
+            list_of_filenames = Enumerate_Filenames(path_to_directory)
+            sorted_list_of_files = Sort_Filenames(list_of_filenames)
             Amalgamate_Files() # fill in these arguments
 
 
