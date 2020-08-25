@@ -9,6 +9,17 @@ def get_file_contents_from_filepath_or_file_contents(filepath, file_contents_as_
         raise RuntimeError("Filepath must be a file like object, or you must pass the file contents as a string")
     return file_contents_as_a_string
 
+def write_file_contents_to_file(file_path, file_contents_as_a_string):
+    from pathlib import Path
+    if type(file_path) == type(Path()):
+        file_path.write_text(file_contents_as_a_string)
+    if type(file_path) == type(str()):
+        with open(file_path, "wt") as f:
+            amount_of_content = len(file_contents_as_a_string)
+            amount_of_content_that_was_written = f.write(file_contents_as_a_string)
+            if amount_of_content != amount_of_content_that_was_written:
+                print("Mismatch in write_file_contents_to_file, but hopefully everything is fine")
+
 def get_header_footer(filepath, start_of_insertable_content_marker = "%start", end_of_insertable_content_marker = "%end", file_contents_as_a_string = None):
     part = 0
     header = ""
