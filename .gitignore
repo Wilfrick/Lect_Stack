@@ -1,6 +1,7 @@
 # pycharm files
 /.idea/**/*
 /venv/**/*
+/scripts/__pycache__/**/*
 
 # LaTeX files that will just get in the way 
 *.synctex.gz
