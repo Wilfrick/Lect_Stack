@@ -1,5 +1,6 @@
 # ToDo
 
+
 - [ ] Script to bundle lecture notes together into a master course file.
 - [ ] Script to sort lecture notes by properties like number or date
 - [ ] Script to set up a new directory
@@ -9,3 +10,4 @@
 - [ ] Amalgamate_Files needs to read this config file and use its contents to populate the template as needed
 
 - [ ] Lots more testing needed
+
