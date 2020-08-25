@@ -61,16 +61,22 @@ def replace_identifiers_with_lookup_dictionary_in_string(template_string, lookup
     return template_string_with_new_insertions
 
 
-def Amalgamate_Files(path_to_output_file, sorted_list_of_filenames, template_path = None): # writes the combined file to the output path
+def Amalgamate_Files(path_to_output_file, sorted_list_of_file_paths, template_path = None, source_directory_name = None, local_images_directory_name = "figures", local_premable_file_name = "preamble.tex"): # writes the combined file to the output path
+    if source_directory_name == None:
+        source_directory_name = path_to_output_file.name[:-4]
     if template_path == None:
         with open(path_to_output_file, "wt") as f_out:
-            for path in sorted_list_of_filenames:
+            for path in sorted_list_of_file_paths:
                 with open(path, "rt") as f_in:
                     file_Contents = f_in.read()
                     f_out.write(file_Contents)
     else: # use the template
         template_file_contents_as_a_string = get_file_contents_from_filepath_or_file_contents(template_path)
-        lookup_dictionary = {r"##ENTRIES##": "\n".join(r"\input{{{}}}".format(filename) for filename in sorted_list_of_filenames)}
+        lookup_dictionary = {r"##ENTRIES##": "\n".join(r"\input{{{}}}".format(str(file_path).replace("\\", "/")) for file_path in sorted_list_of_file_paths),
+                             r"##AUTHOR##": "Henry",
+                             r"##TITLE##": path_to_output_file.name,
+                             r"##PATH_TO_IMAGE_FOLDER##": str(path_to_output_file.parent / source_directory_name / local_images_directory_name).replace("\\", "/"),
+                             r"##PATH_TO_LOCAL_PREAMBLE##": str(path_to_output_file.parent / source_directory_name / local_premable_file_name).replace("\\", "/")}
         output_file_contents = replace_identifiers_with_lookup_dictionary_in_string(template_file_contents_as_a_string, lookup_dictionary)
         write_file_contents_to_file(path_to_output_file, output_file_contents)
 

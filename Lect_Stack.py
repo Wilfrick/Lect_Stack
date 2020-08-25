@@ -20,21 +20,24 @@ Options:
             show_help()
             exit(0)
     else: # standard usage
-        if len(options) >= 0:
+        if len(options) > 0:
             pass # add more logic here to deal with other options
         else: # default behaviour
-            from os import getcwd, path
-            path_to_directory = path.join(argv[-1], getcwd)
-            if not os.path.isdir(path_to_directory):
+            from os import getcwd, path # rewrite this to use pathlib at some point
+            path_to_directory = path.join(getcwd(), argv[-1])
+            if not path.isdir(path_to_directory):
                 show_help()
                 print("This failed because the path provided was not a directory") # this might still fail for special links, needs testing
             from scripts.Enumerate_Files import Enumerate_Filenames
             from scripts.Amalgamate_Files import Amalgamate_Files
             from scripts.Sort_Files import Sort_Filenames
-            list_of_filenames = Enumerate_Filenames(path_to_directory)
-            sorted_list_of_files = Sort_Filenames(list_of_filenames)
-            Amalgamate_Files() # fill in these arguments
+            from pathlib import Path
+            list_of_file_paths = Enumerate_Filenames(Path(path_to_directory)) # when this all gets rewritten to use pathlib.Path by default this line can be simplified
+            sorted_list_of_file_paths = Sort_Filenames(list_of_file_paths)
+            Amalgamate_Files(Path(path_to_directory).joinpath("..\\{}.tex".format(Path(argv[-1]).name)).resolve(), sorted_list_of_file_paths, Path(path_to_directory).joinpath("..\\default_template.tex")) # fill in these arguments
 
+            print("Success")
+            exit(0)
 
 
 
