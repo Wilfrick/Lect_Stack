@@ -1,0 +1,14 @@
+\input{preamble.tex}
+\startEntry{}
+\section{Best Egg Cooking stratergy}
+We want to cook the egg in the best way, but what should "best" mean here? Clearly the quality of the final egg should matter, but to make the question more interesting we will consider one other factor, the enjoyment of cooking the egg in the first place. You enjoy cooking an egg more if it looks and smells tastier, so the total enjoyment you get is an integral of the following form \[ \text{Enjoyment} = \int_{t_\text{start}}^{t_\text{end}} \text{tastiness}(t) \,\dx[t]\]
+We can draw a diagram for this, because why not:
+\begin{figure}[h]
+\includegraphics[width = 6cm]{area_under_graph.jpg}
+\end{figure}
+
+
+Our final total goodness function becomes:
+\[ \text{Goodness}(T) = \int_{t_\text{start}}^{T} \text{tastiness}(t) \,\dx[t] + \text{tastiness}(T) \]
+We will finish this off next time.
+\finishEntry{}
