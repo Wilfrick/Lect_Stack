@@ -14,7 +14,7 @@ def Sort_Filenames(list_of_file_paths, *args, **kwargs):
 def exclued_preamble_dot_tex(list_of_file_paths):
     return [file_path for file_path in list_of_file_paths if file_path.name != "preamble.tex"]
 
-def get_sorting_method(args,kwargs,valid_sorting_methods = ["number", "alphabetical"]): # define reasonable default for valid_sorting_methods
+def get_sorting_method(*args, valid_sorting_methods = ["number", "alphabetical"], **kwargs): # define reasonable default for valid_sorting_methods
     # count the number of sorting arguments
     arg_num = 0
     arg_list = []
