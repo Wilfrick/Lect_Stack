@@ -35,7 +35,7 @@ def get_sorting_method(*args, valid_sorting_methods = ["number", "alphabetical"]
     elif arg_num > 1:
         raise RuntimeError("Too many sorting methods provided, please decide on one!")
     elif arg_num == 1:
-        return args[0]
+        return arg_list[0]
     else:
         raise RuntimeError("You broke the program and my brain, congrats!")
 
