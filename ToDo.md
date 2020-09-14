@@ -1,9 +1,9 @@
 # ToDo
 
 
-- [ ] Script to bundle lecture notes together into a master course file.
-- [ ] Script to sort lecture notes by properties like number or date
-- [ ] Script to set up a new directory
+- [x] Script to bundle lecture notes together into a master course file.
+- [x] Script to sort lecture notes by properties like number or date
+- [x] Script to set up a new directory
 - [ ] (Maybe) Upload compiled lecture notes to cloud
 
 - [ ] Config file to store Author name and anything else we want (so that the default name can be something other than "Henry")
