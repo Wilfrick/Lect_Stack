@@ -14,7 +14,7 @@ def Sort_Filenames(list_of_file_paths, *args, **kwargs):
 def exclued_preamble_dot_tex(list_of_file_paths):
     return [file_path for file_path in list_of_file_paths if file_path.name != "preamble.tex"]
 
-def get_sorting_method(args,kwargs,valid_sorting_methods = []): # define reasonable default for valid_sorting_methods
+def get_sorting_method(args,kwargs,valid_sorting_methods = ["number", "alphabetical"]): # define reasonable default for valid_sorting_methods
     # count the number of sorting arguments
     arg_num = 0
     arg_list = []
@@ -35,14 +35,17 @@ def get_sorting_method(args,kwargs,valid_sorting_methods = []): # define reasona
     elif arg_num > 1:
         raise RuntimeError("Too many sorting methods provided, please decide on one!")
     elif arg_num == 1:
-        return arg_list[0]
+        return args[0]
     else:
         raise RuntimeError("You broke the program and my brain, congrats!")
 
 def make_number_file_dictionary(list_of_file_paths):
     number_file_dictionary = {}
     for path in list_of_file_paths:
-        number_file_dictionary[int(re.findall(r'\d+',str(path))[-1])] = path
+        try:
+            number_file_dictionary[int(re.findall(r'\d+',str(path))[-1])] = path
+        except IndexError:
+            print("Couldn't find a number for the file called: " + str(path))
     return number_file_dictionary
 
 def sort_by_number(list_of_file_paths):
