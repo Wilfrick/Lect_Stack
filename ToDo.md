@@ -1,9 +1,7 @@
 # ToDo
 
 
-- [x] Script to bundle lecture notes together into a master course file.
-- [x] Script to sort lecture notes by properties like number or date
-- [x] Script to set up a new directory
+
 
 
 
