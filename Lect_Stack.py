@@ -35,7 +35,7 @@ Options:
 
             list_of_file_paths = Enumerate_Filenames(Path(path_to_directory)) # when this all gets rewritten to use pathlib.Path by default this line can be simplified
             sorted_list_of_file_paths = Sort_Filenames(list_of_file_paths, sort = "number")
-            Amalgamate_Files(Path(path_to_directory).joinpath("..\\{}.tex".format(Path(argv[-1]).name)).resolve(), sorted_list_of_file_paths, Path(path_to_directory).joinpath("..\\default_template.tex")) # fill in these arguments
+            Amalgamate_Files(Path(path_to_directory).joinpath("..\\{}.tex".format(Path(argv[-1]).name)).resolve(), sorted_list_of_file_paths, Path(path_to_directory).joinpath("..\\default_template.tex").resolve()) # fill in these arguments
 
             print("Success")
             exit(0)
